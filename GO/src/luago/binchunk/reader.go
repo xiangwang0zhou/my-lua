@@ -59,7 +59,9 @@ func (self *reader) checkHeader() {
 	} else if self.readByte() != LUAC_VERSION {
 		panic("version mismatch!")
 	} else if self.readByte() != LUAC_FORMAT {
-		panic("corrupted!")
+		panic("format mismatched!")
+	} else if string(self.readBytes(6))!=LUAC_DATA{
+		panic("corrupted")
 	} else if self.readByte() != CINT_SIZE {
 		panic("int size mismatched!")
 	} else if self.readByte() != CSIZET_SIZE {
