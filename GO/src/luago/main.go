@@ -2,6 +2,7 @@ package main
 
 import (
 	"LuaGo/src/luago/binchunk"
+	. "LuaGo/src/luago/vm"
 	"fmt"
 	"os"
 )
@@ -38,7 +39,10 @@ func printCode(f *binchunk.Prototype) {
 		if len(f.LineIofo) > 0 {
 			line = fmt.Sprintf("%d", f.LineIofo[pc])
 		}
-		fmt.Printf("\t%d\t[%s]\t0x%08X\n", pc+1, line, c)
+		i := Instruction(c)
+		fmt.Printf("\t%d\t[%s]\t%s \t", pc+1, line, i.OpName())
+		printOperands(i)
+		fmt.Printf("\n")
 	}
 }
 
@@ -81,6 +85,42 @@ func upvalName(f *binchunk.Prototype, idx int) string {
 		return f.UpvalueNames[idx]
 	}
 	return "_"
+}
+
+func printOperands(i Instruction) {
+	switch i.OpMode() {
+	case IABC:
+		a, b, c := i.ABC()
+		fmt.Printf("%d", a)
+		if i.BMode() != OpArgN {
+			if b > 0xFF {
+				fmt.Printf(" %d", -1-b&0xFF)
+			} else {
+				fmt.Printf(" %d", b)
+			}
+		}
+		if i.CMode() != OpArgN {
+			if c > 0xFF {
+				fmt.Printf(" %d", -1-c&0xFF)
+			} else {
+				fmt.Printf(" %d", c)
+			}
+		}
+	case IABx:
+		a, bx := i.ABx()
+		fmt.Printf(("%d"), a)
+		if i.BMode() == OpArgK {
+			fmt.Printf(" %d", -1-bx)
+		} else if i.BMode() == OpArgU {
+			fmt.Printf(" %d", bx)
+		}
+	case IAsBx:
+		a, sbx := i.AsBx()
+		fmt.Printf("%d %d", a, sbx)
+	case IAx:
+		ax := i.Ax()
+		fmt.Printf("%d", -1-ax)
+	}
 }
 
 func main() {
