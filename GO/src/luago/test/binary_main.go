@@ -1,10 +1,9 @@
-package main
+package test
 
 import (
 	"LuaGo/src/luago/binchunk"
 	. "LuaGo/src/luago/vm"
 	"fmt"
-	"os"
 )
 
 func list(f *binchunk.Prototype) {
@@ -123,13 +122,15 @@ func printOperands(i Instruction) {
 	}
 }
 
-func main() {
-	if len(os.Args) > 1 {
-		data, err := os.ReadFile(os.Args[1])
-		if err != nil {
-			panic(err)
-		}
-		proto := binchunk.Undump(data)
-		list(proto)
-	}
-}
+//
+//func main() {
+//	if len(os.Args) > 1 {
+//		data, err := os.ReadFile(os.Args[1])
+//		if err != nil {
+//			panic(err)
+//		}
+//		proto := binchunk.Undump(data)
+//		list(proto)
+//	}
+//}
+//

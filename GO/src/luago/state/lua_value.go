@@ -1,5 +1,7 @@
 package state
 
+import . "LuaGo/src/luago/api"
+
 type luaValue interface{}
 
 func typeOf(val luaValue) LuaType {
@@ -16,5 +18,16 @@ func typeOf(val luaValue) LuaType {
 		return LUA_TSTRING
 	default:
 		panic("todo")
+	}
+}
+
+func convertToBoolean(val luaValue) bool {
+	switch x := val.(type) {
+	case nil:
+		return false
+	case bool:
+		return x
+	default:
+		return true
 	}
 }

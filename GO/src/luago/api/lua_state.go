@@ -5,7 +5,7 @@ type LuaType = int
 type LuaState interface {
 	/*basic stack manipulation*/
 	GetTop() int
-	absIndex(idx int) int
+	AbsIndex(idx int) int
 	CheckStack(n int) bool
 	Pop(n int)
 	Copy(fromIdx, toIdx int)
