@@ -61,6 +61,7 @@ func (self *luaStack) set(idx int, val luaValue) {
 	absIdx := self.absIndex(idx)
 	if absIdx > 0 && absIdx < self.top {
 		self.slots[absIdx-1] = val
+		return
 	}
 	panic("invalid index!")
 }
