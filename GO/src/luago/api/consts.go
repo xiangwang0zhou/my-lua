@@ -21,6 +21,7 @@ const (
 	LUA_OPDIV         // /
 	LUA_OPIDIV        // //
 	LUA_OPBAND        //&
+	LUA_OPBOR         //|
 	LUA_OPBXOR        //~
 	LUA_OPSHL         //<<
 	LUA_OPSHR         //>>

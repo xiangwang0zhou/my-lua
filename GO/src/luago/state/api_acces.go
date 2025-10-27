@@ -94,13 +94,13 @@ func (self *luaState) ToIntegerX(idx int) (int64, bool) {
 }
 
 func (self *luaState) ToStringX(idx int) (string, bool) {
-	val := self.stack.get(idx)
+	val := self.stack.get(idx) //error val's type is number
 	switch x := val.(type) {
 	case string:
 		return x, true
 	case int64, float64:
-		s := fmt.Sprintf("%v", x)
-		self.stack.set(idx, x) //It will influence stack
+		s := fmt.Sprintf("%v", x) //s is a string and will set int stack
+		self.stack.set(idx, x)    //It will influence stack;so error comes now
 		return s, true
 	default:
 		return "", false

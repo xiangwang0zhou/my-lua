@@ -1,5 +1,7 @@
 package state
 
+import "fmt"
+
 type luaStack struct {
 	slots []luaValue
 	top   int
@@ -59,6 +61,7 @@ func (self *luaStack) get(idx int) luaValue {
 
 func (self *luaStack) set(idx int, val luaValue) {
 	absIdx := self.absIndex(idx)
+	fmt.Printf("absIdx is %d. value is %s\n", absIdx, val) //debug expression
 	if absIdx > 0 && absIdx < self.top {
 		self.slots[absIdx-1] = val
 		return
