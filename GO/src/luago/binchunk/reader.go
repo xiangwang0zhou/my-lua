@@ -60,7 +60,7 @@ func (self *reader) checkHeader() {
 		panic("version mismatch!")
 	} else if self.readByte() != LUAC_FORMAT {
 		panic("format mismatched!")
-	} else if string(self.readBytes(6))!=LUAC_DATA{
+	} else if string(self.readBytes(6)) != LUAC_DATA {
 		panic("corrupted")
 	} else if self.readByte() != CINT_SIZE {
 		panic("int size mismatched!")

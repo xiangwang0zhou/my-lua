@@ -42,6 +42,6 @@ type LuaState interface {
 	PushString(s string)
 	Arith(op ArithOp) //common operation and bit operation
 	Compare(idx1, idx2 int, op CompareOp) bool
-	len(idx int)
+	Len(idx int)
 	Concat(n int) //splicing strings
 }
