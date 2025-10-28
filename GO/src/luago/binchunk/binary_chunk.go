@@ -17,7 +17,7 @@ type header struct {
 	luaIntegerSize  byte    // the size of
 	luaNumberSize   byte    // the size of
 	luacInt         int64   //the size of
-	luacNum         float64 //the format of float ,In common s IEEE754
+	luacNum         float64 //the format of float ,In common is IEEE754
 }
 
 const (
