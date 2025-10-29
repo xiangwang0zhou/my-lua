@@ -85,7 +85,7 @@ func not(i Instruction, vm LuaVM) {
 	vm.Replace(a)
 }
 
-func testset(i Instruction, vm LuaVM) {
+func testSet(i Instruction, vm LuaVM) {
 	a, b, c := i.ABC()
 	a += 1
 	b += 1
