@@ -19,10 +19,10 @@ func (self *luaState) GetConst(idx int) {
 	self.stack.push(c)
 }
 
-func (self *luaState) GetRK(rk int) { //rk is OpArgK
-	if rk > 0xFF { //constant ,first bit is 1
+func (self *luaState) GetRK(rk int) {
+	if rk > 0xFF { // constant
 		self.GetConst(rk & 0xFF)
-	} else { //register
-		self.PushValue(rk + 1) //Lua Api'stack index begin in 1
+	} else { // register
+		self.PushValue(rk + 1)
 	}
 }

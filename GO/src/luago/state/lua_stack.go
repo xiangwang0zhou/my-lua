@@ -37,7 +37,7 @@ func (self *luaStack) pop() luaValue {
 	return val
 }
 
-func (self *luaStack) absIndex(idx int) int { //return absolute index
+func (self *luaStack) absIndex(idx int) int {
 	if idx >= 0 {
 		return idx
 	}
