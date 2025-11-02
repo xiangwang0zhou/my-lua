@@ -44,4 +44,14 @@ type LuaState interface {
 	Compare(idx1, idx2 int, op CompareOp) bool
 	Len(idx int)
 	Concat(n int) //splicing strings
+	/*get function (Lua->stack) */
+	NewTable()
+	CreateTable(nArr, nRec int)
+	GetTable(idx int) LuaType
+	GetField(idx int, k string) LuaType
+	GetI(idx int, i int64) LuaType
+	/*set function stack->lua */
+	SetTable(idx int)
+	SetField(idx int, k string)
+	SetI(idx int, n int64)
 }
