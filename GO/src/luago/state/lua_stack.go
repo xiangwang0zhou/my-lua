@@ -1,8 +1,12 @@
 package state
 
 type luaStack struct {
-	slots []luaValue
-	top   int
+	slots   []luaValue
+	top     int
+	prev    *luaStack
+	closure *closure //same to function
+	varargs []luaValue
+	pc      int //instructions table
 }
 
 func newLuaStack(size int) *luaStack {

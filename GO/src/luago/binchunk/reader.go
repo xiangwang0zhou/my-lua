@@ -85,19 +85,19 @@ func (self *reader) readProto(parentSource string) *Prototype {
 		source = parentSource
 	}
 	return &Prototype{
-		Source:         source,
-		LineDefined:    self.readUint32(),
-		LastLineDfined: self.readUint32(),
-		NumberParams:   self.readByte(),
-		IsVararg:       self.readByte(),
-		MaxStackSize:   self.readByte(),
-		Code:           self.readCode(),
-		Constants:      self.readConstants(),
-		Upvalues:       self.readUpvalue(),
-		Protos:         self.readProtos(source),
-		LineIofo:       self.readLineInfo(),
-		LocVars:        self.readLocVars(),
-		UpvalueNames:   self.readUpvalueNames(),
+		Source:          source,
+		LineDefined:     self.readUint32(),
+		LastLineDefined: self.readUint32(),
+		NumParams:       self.readByte(),
+		IsVararg:        self.readByte(),
+		MaxStackSize:    self.readByte(),
+		Code:            self.readCode(),
+		Constants:       self.readConstants(),
+		Upvalues:        self.readUpvalue(),
+		Protos:          self.readProtos(source),
+		LineIofo:        self.readLineInfo(),
+		LocVars:         self.readLocVars(),
+		UpvalueNames:    self.readUpvalueNames(),
 	}
 }
 

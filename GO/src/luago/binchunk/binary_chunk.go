@@ -35,19 +35,19 @@ const (
 )
 
 type Prototype struct { //the proto of function
-	Source         string
-	LineDefined    uint32
-	LastLineDfined uint32 //the position
-	NumberParams   byte
-	IsVararg       byte
-	MaxStackSize   byte
-	Code           []uint32
-	Constants      []interface{} //used as the union in C
-	Upvalues       []Upvalue
-	Protos         []*Prototype
-	LineIofo       []uint32
-	LocVars        []LocVar
-	UpvalueNames   []string
+	Source          string
+	LineDefined     uint32
+	LastLineDefined uint32 //the position
+	NumParams       byte
+	IsVararg        byte
+	MaxStackSize    byte
+	Code            []uint32
+	Constants       []interface{} //used as the union in C
+	Upvalues        []Upvalue
+	Protos          []*Prototype
+	LineIofo        []uint32
+	LocVars         []LocVar
+	UpvalueNames    []string
 }
 
 const (
